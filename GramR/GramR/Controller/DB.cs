@@ -157,5 +157,26 @@ VALUES (@Id)";
                 return 0;
             }
         }
+
+        public static async Task<int> GetRowCountAsync(string table)
+        {
+            var query = $"SELECT COUNT(*) FROM [{table}]";
+
+            try
+            {
+                using var connection = new SQLiteConnection(_connectionString);
+                using var command = new SQLiteCommand(query, connection);
+
+                await connection.OpenAsync();
+                var result = await command.ExecuteScalarAsync();
+
+                return Convert.ToInt32(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"GetRowCountAsync error: {ex.Message}");
+                return -1; // or 0 if you prefer to treat errors as "empty"
+            }
+        }
     }
 }
