@@ -11,12 +11,6 @@
     <Platforms>x64</Platforms>
   </PropertyGroup>
 	
-<ItemGroup>
-	  <Reference Include="MLib">
-	    <HintPath>..\MLib\bin\x64\Debug\net9.0\MLib.dll</HintPath>
-	  </Reference>
-	</ItemGroup>
-	
   <ItemGroup>
     <None Remove="igdb.db" />
   </ItemGroup>
@@ -31,6 +25,12 @@
     <PackageReference Include="CustomControlsNET" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MLib">
+      <HintPath>..\..\MLib\MLib\obj\x64\Debug\net9.0\MLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
