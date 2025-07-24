@@ -10,9 +10,26 @@
 	  <NoWarn>$(NoWarn);WFO5001</NoWarn>
     <Platforms>x64</Platforms>
   </PropertyGroup>
+	
+<ItemGroup>
+	  <Reference Include="MLib">
+	    <HintPath>..\MLib\bin\x64\Debug\net9.0\MLib.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+	
+  <ItemGroup>
+    <None Remove="igdb.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="igdb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
   </ItemGroup>
 
 </Project>
