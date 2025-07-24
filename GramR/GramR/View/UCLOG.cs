@@ -13,21 +13,21 @@ namespace GramR.View
         }
 
         // Delegating function for logging text messages
-        //private void Log(string message)
-        //{
-        //    if (LOG.InvokeRequired)
-        //    {
-        //        LOG.Invoke(() => LOG.AppendText(message + Environment.NewLine));
-        //    }
-        //    else
-        //    {
-        //        LOG.AppendText(message + Environment.NewLine);
-        //    }
+        private void Log(string message)
+        {
+            if (LOG.InvokeRequired)
+            {
+                LOG.Invoke(() => LOG.AppendText(message + Environment.NewLine));
+            }
+            else
+            {
+                LOG.AppendText(message + Environment.NewLine);
+            }
 
-        //    // Enable or disable buttons based on current content
-        //    btnSaveLog.Enabled = ShouldEnable(btnSaveLog.Name);
-        //    btnClearLog.Enabled = ShouldEnable(btnClearLog.Name);
-        //}
+            // Enable or disable buttons based on current content
+            btnSave.Enabled = ShouldEnable(btnSave.Name);
+            btnClear.Enabled = ShouldEnable(btnClear.Name);
+        }
 
         public override void SubscribeEvents()
         {
@@ -53,5 +53,14 @@ namespace GramR.View
 
             base.UnsubscribeEvents(); // Clean up any base class listeners
         }
+
+        // Logic for deciding whether each button should be active
+        private bool ShouldEnable(string btnName) =>
+            btnName switch
+            {
+                "btnClear" => !string.IsNullOrEmpty(LOG.Text),
+                "btnSave" => !string.IsNullOrEmpty(LOG.Text),
+                _ => false // Any other buttons are disabled by default
+            };
     }
 }

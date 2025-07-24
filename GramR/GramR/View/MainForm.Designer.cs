@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             pnlNav = new Pnl();
-            btnDb = new Button();
             btnLog = new Button();
-            lblAcc = new Label();
-            lblId = new Label();
+            btnDb = new Button();
             pnlController = new Pnl();
             pnlNav.SuspendLayout();
             SuspendLayout();
@@ -41,8 +39,6 @@
             // 
             pnlNav.BorderColor = Color.Gainsboro;
             pnlNav.BorderSize = 1;
-            pnlNav.Controls.Add(lblId);
-            pnlNav.Controls.Add(lblAcc);
             pnlNav.Controls.Add(btnLog);
             pnlNav.Controls.Add(btnDb);
             pnlNav.Dock = DockStyle.Top;
@@ -52,20 +48,6 @@
             pnlNav.Size = new Size(780, 38);
             pnlNav.TabIndex = 0;
             pnlNav.Text = "pnl1";
-            // 
-            // btnDb
-            // 
-            btnDb.BackgroundImage = Properties.Resources.darkxl;
-            btnDb.BackgroundImageLayout = ImageLayout.Stretch;
-            btnDb.Dock = DockStyle.Left;
-            btnDb.FlatStyle = FlatStyle.Popup;
-            btnDb.ForeColor = Color.White;
-            btnDb.Location = new Point(4, 4);
-            btnDb.Name = "btnDb";
-            btnDb.Size = new Size(92, 30);
-            btnDb.TabIndex = 0;
-            btnDb.Text = "Database";
-            btnDb.UseVisualStyleBackColor = true;
             // 
             // btnLog
             // 
@@ -80,30 +62,22 @@
             btnLog.TabIndex = 1;
             btnLog.Text = "Log";
             btnLog.UseVisualStyleBackColor = true;
+            btnLog.Click += btnLog_Click;
             // 
-            // lblAcc
+            // btnDb
             // 
-            lblAcc.BorderStyle = BorderStyle.FixedSingle;
-            lblAcc.Dock = DockStyle.Right;
-            lblAcc.ForeColor = Color.White;
-            lblAcc.Location = new Point(656, 4);
-            lblAcc.Name = "lblAcc";
-            lblAcc.Size = new Size(120, 30);
-            lblAcc.TabIndex = 1;
-            lblAcc.Text = "Accounts:";
-            lblAcc.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblId
-            // 
-            lblId.BorderStyle = BorderStyle.FixedSingle;
-            lblId.Dock = DockStyle.Right;
-            lblId.ForeColor = Color.White;
-            lblId.Location = new Point(536, 4);
-            lblId.Name = "lblId";
-            lblId.Size = new Size(120, 30);
-            lblId.TabIndex = 2;
-            lblId.Text = "Id:";
-            lblId.TextAlign = ContentAlignment.MiddleCenter;
+            btnDb.BackgroundImage = Properties.Resources.darkxl;
+            btnDb.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDb.Dock = DockStyle.Left;
+            btnDb.FlatStyle = FlatStyle.Popup;
+            btnDb.ForeColor = Color.White;
+            btnDb.Location = new Point(4, 4);
+            btnDb.Name = "btnDb";
+            btnDb.Size = new Size(92, 30);
+            btnDb.TabIndex = 0;
+            btnDb.Text = "Database";
+            btnDb.UseVisualStyleBackColor = true;
+            btnDb.Click += btnDb_Click;
             // 
             // pnlController
             // 
@@ -137,8 +111,6 @@
         private Pnl pnlNav;
         private Button btnDb;
         private Button btnLog;
-        private Label lblAcc;
-        private Label lblId;
         private Pnl pnlController;
     }
 }

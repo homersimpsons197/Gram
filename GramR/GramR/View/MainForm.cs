@@ -38,12 +38,40 @@ namespace GramR
             pnlController.Controls.Add(_db);
             _db.Dock = DockStyle.Fill;
             _db.Visible = false;
+        }
 
-            // The settings view is prepared but not added or shown yet
-            // _settings = new UCSettings(_c);
-            // pnlController.Controls.Add(_settings);
-            // _settings.Dock = DockStyle.Fill;
-            // _settings.Visible = false;
+        // Shows a specific user control view on the form
+        private void ShowView(EventAwareUserControl view)
+        {
+            // If the requested view is already active, do nothing
+            if (_activeView == view)
+                return;
+
+            // Hide the current view and unsubscribe from its events
+            if (_activeView != null)
+            {
+                _activeView.Visible = false;
+                _activeView.UnsubscribeEvents();
+            }
+
+            // Set the new view as active, make it visible, and subscribe to its events
+            _activeView = view;
+            _activeView.Visible = true;
+            _activeView.SubscribeEvents(); // May be optional if the base class handles it
+        }
+
+        private void btnDb_Click(object sender, EventArgs e)
+        {
+            ShowView(_db); // Show the database view when button clicked
+            btnDb.Enabled = false; // Disable the button to prevent re-clicking
+            btnLog.Enabled = true; // Enable the log button for navigation
+        }
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            ShowView(_log); // Show the log view when button clicked
+            btnLog.Enabled = false; // Disable the button to prevent re-clicking
+            btnDb.Enabled = true; // Enable the database button for navigation
         }
     }
 }
